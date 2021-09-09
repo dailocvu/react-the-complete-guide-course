@@ -1,4 +1,10 @@
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
+
+/*
+- Chứa data
+- Nơi app hoàn chỉnh tạo thành
+*/
 
 const App = () => {
   const expenses = [
@@ -22,7 +28,22 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
-  return <Expenses items={expenses} />;
-}
+  //Truyền dữ liệu từ child to parent
+  const addExpenseHandler = (expense) => {
+    console.log("App.js");
+    console.log(expense);
+  };
+
+  //Cần truyền đi expenses -> gán = items
+  //Nơi nhận cần dùng props
+  return (
+    <div>
+      {/*truyền dữ liệu từ child to parent */}
+      <NewExpense onAddExpense={addExpenseHandler} />
+
+      <Expenses items={expenses} />
+    </div>
+  );
+};
 
 export default App;
