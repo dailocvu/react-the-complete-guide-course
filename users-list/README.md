@@ -5,5 +5,7 @@
 - Use Props and useState more fluently
 - Styling with CSS module
 
-<img src="./screenshots/users-list1.png">
-<img src="./screenshots/users-list2.png">
+# Screenshots
+
+<img src="./screenshots/users-list1.png" width="600px">
+<img src="./screenshots/users-list2.png" width="600px">
