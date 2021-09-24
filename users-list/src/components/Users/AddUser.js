@@ -5,30 +5,34 @@
 -
 */
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import classes from "./AddUser.module.css";
 import ErrorModal from "../UI/ErrorModal";
 
 const AddUser = (props) => {
+  //Trả về object, là current props
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   //state dùng để làm gì ?
   //stae dùng để chứa dữ liệu -> state thay đổi thì rerender
 
   //state chứa dữ liệu tên được nhập vào, giá trị biến lúc đầu là trống
   //tương tự với tuổi và error
-  const [enteredUsername, setEnteredUsername] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
+  // const [enteredUsername, setEnteredUsername] = useState("");
+  // const [enteredAge, setEnteredAge] = useState("");
   const [error, setError] = useState("");
 
   //update state bằng giá trị nhập vào
-  const usernameChangeHandler = (e) => {
-    setEnteredUsername(e.target.value);
-  };
+  // const usernameChangeHandler = (e) => {
+  //   setEnteredUsername(e.target.value);
+  // };
 
-  const ageChangeHandler = (e) => {
-    setEnteredAge(e.target.value);
-  };
+  // const ageChangeHandler = (e) => {
+  //   setEnteredAge(e.target.value);
+  // };
 
   //Khi nhấn xác nhận -> null
   const errorHandler = () => {
@@ -38,6 +42,10 @@ const AddUser = (props) => {
   //hàm chạy khi form được submit
   const addUserHandler = (e) => {
     e.preventDefault();
+
+    //Refs
+    const enteredUsername = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
 
     //Validation input, nếu lỗi cập nhật state
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
@@ -61,9 +69,13 @@ const AddUser = (props) => {
     //truyền tên và tuổi đã được nhập ngược lên App
     props.onAddUser(enteredUsername, enteredAge);
 
-    //Sau đó reset input và dùng thêm value={} trong input -> 2 side renders
-    setEnteredUsername("");
-    setEnteredAge("");
+    //reset Refs (không nên thực hiện cách này vì không được React quản lý)
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
+
+    //Sau đó reset input và dùng thêm value={} trong input -> 2 side renders (ko cần thiết nếu dùng Refs)
+    // setEnteredUsername("");
+    // setEnteredAge("");
   };
 
   return (
@@ -82,16 +94,18 @@ const AddUser = (props) => {
           <input
             id="username"
             type="text"
+            ref={nameInputRef}
             //two way binding
-            value={enteredUsername}
-            onChange={usernameChangeHandler}
+            // value={enteredUsername}
+            // onChange={usernameChangeHandler}
           />
           <label htmlFor="age">Age (Years)</label>
           <input
             id="age"
             type="number"
-            value={enteredAge}
-            onChange={ageChangeHandler}
+            ref={ageInputRef}
+            // value={enteredAge}
+            // onChange={ageChangeHandler}
           />
           <Button type="submit">Add User</Button>
         </form>
