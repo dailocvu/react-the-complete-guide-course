@@ -4,6 +4,7 @@ const Button = (props) => {
   return (
     <button
       className={classes.button}
+      //nếu không tìm thấy type thì trả về button
       type={props.type || "button"}
       onClick={props.onClick}
     >
