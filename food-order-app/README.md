@@ -12,6 +12,6 @@ Hooks included:
 - useContext
 - useReducer
 
-# Screenshot
+# Demo
 
 <img src="./screenshots/food-order-app.gif">
