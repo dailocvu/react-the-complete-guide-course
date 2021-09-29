@@ -1,7 +1,11 @@
 # Great Quotes
 
-Just a simple quotes generate project to familiar with React Router
+A quotes generate app project to familiar with:
 
-# Screenshot
+- Hooks
+- React Router / Lazy loading
+- Sending and getting quotes data with Firebase
 
-<img src="./screenshots/" width="600">
+# Demo
+
+<img src="./screenshots/great-quotes.gif" width="600">
