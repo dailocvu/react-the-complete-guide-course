@@ -8,4 +8,4 @@ A quotes generate app project to familiar with:
 
 # Demo
 
-<img src="./screenshots/great-quotes.gif" width="600">
+<img src="./screenshots/great-quotes.gif" >
